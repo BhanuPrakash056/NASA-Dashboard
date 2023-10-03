@@ -1,10 +1,10 @@
 const request = require("supertest");
 const app = require("../../app");
 
-describe("Test GET /launches", () => {
+describe("Test GET /", () => {
   test("It should respond with 200 success", async () => {
     const response = await request(app)
-      .get("/launches")
+      .get("/")
       .expect("Content-Type", /json/)
       .expect(200);
   });
@@ -33,7 +33,7 @@ describe("Test POST /launch", () => {
 
   test("It should respond with 201 created", async () => {
     const response = await request(app)
-      .post("/launches")
+      .post("/")
       .send(completeLaunchData)
       .expect("Content-Type", /json/)
       .expect(201);
@@ -47,7 +47,7 @@ describe("Test POST /launch", () => {
 
   test("It should catch missing required properties", async () => {
     const response = await request(app)
-      .post("/launches")
+      .post("/")
       .send(launchDataWithoutDate)
       .expect("Content-Type", /json/)
       .expect(400);
@@ -59,7 +59,7 @@ describe("Test POST /launch", () => {
 
   test("It should catch invalid dates", async () => {
     const response = await request(app)
-      .post("/launches")
+      .post("/")
       .send(launchDataWithInvalidDate)
       .expect("Content-Type", /json/)
       .expect(400);
