@@ -7,7 +7,7 @@ const app = express();
 app.use(morgan("combined"));
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:3001",
   })
 );
 app.use(express.json());
